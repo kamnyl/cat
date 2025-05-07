@@ -1,0 +1,23 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: "Poppins", sans-serif;
+    background: url('../assets/cat_img.jpg') center center / cover no-repeat fixed; 
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  @media (max-width: 768px) {
+    body {
+      background-image: url('../assets/cat_img_mobile.jpg'), linear-gradient(to bottom, #ffffff);
+      background-position: top center; 
+      background-repeat: no-repeat;
+      height: 100vh; 
+    }
+  }
