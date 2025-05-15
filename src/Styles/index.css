@@ -3,14 +3,16 @@
     padding: 0;
     box-sizing: border-box;
   }
-  
+    
   body {
     font-family: "Poppins", sans-serif;
     background: url('../assets/cat_img.jpg') center center / cover no-repeat fixed; 
     min-height: 100vh;
     display: flex;
     justify-content: center;
-    align-items: center;
+    /* align-items: center; */
+    overflow-x: hidden;
+    width: 100%;
   }
   
   @media (max-width: 768px) {

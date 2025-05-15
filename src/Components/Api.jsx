@@ -33,6 +33,7 @@ const Api = () => {
     };
 
     return (
+        <div className="center-wrapper">
         <div className="card-main">
             {!showFact && (
                 <button className="cat-fact-btn" onClick={fetchData}>Meow's the Time for a Fact</button>
@@ -57,6 +58,7 @@ const Api = () => {
                     </div>
                 </>
             )}
+        </div>
         </div>
     );
 };
