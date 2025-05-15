@@ -20,8 +20,9 @@ const submitLogin = (e) => {
         (user) => user.username === username && user.password === password
     );
 
-    // Navigate to game if user found
+    // Save username to localStorage and navigate to game if user found
     if (matchedUser) {
+        localStorage.setItem("loggedInUser", matchedUser.username);
         navigate("/game");
     } else {
         setErrorMessage(true);

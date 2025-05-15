@@ -6,6 +6,7 @@ const Register = () => {
     const [password, setPassword] = useState("");
     const [successMessage, setSuccessMessage] = useState(false);
     const [errorMessage, setErrorMessage] = useState(false);
+    const [pwdErrorMessage, setPwdErrorMessage] = useState(false);
 
 
     const submitRegistration = (e) => {
@@ -20,9 +21,20 @@ const Register = () => {
         if (userExists) {
             setErrorMessage(true);
             setSuccessMessage(false); 
+            setPwdErrorMessage(false);
             return;
         }
 
+        // Regex to make sure password is at least 8 characters long and include both uppercase and lowercase letters.
+        const pwdRegex = /^(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
+
+        if (!pwdRegex.test(password)) {
+        setPwdErrorMessage(true);
+        setErrorMessage(false);
+        setSuccessMessage(false);
+        return;
+        }
+        
         // New user object
         const newUser = { username, password };
         //Add new user
@@ -32,6 +44,9 @@ const Register = () => {
 
         setSuccessMessage(true);
         setErrorMessage(false); 
+        setPwdErrorMessage(false);
+        setUsername("");
+        setPassword("");
     };
 
     return (
@@ -64,6 +79,10 @@ const Register = () => {
                 )}
                 {successMessage && (
                     <p className="registration-message">You're all set! Log in to play the Cat-Facts Game!</p>
+                )}
+                 {pwdErrorMessage && (
+                <p className="registration-message">
+                Password must be at least 8 characters long and include both uppercase and lowercase letters.</p>
                 )}
             </div>
         </div>

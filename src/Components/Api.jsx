@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../Styles/api.css";
 
 const Api = () => {
@@ -32,9 +32,19 @@ const Api = () => {
         setShowFact(false);
     };
 
+    const [username, setUsername] = useState("");
+
+    useEffect(() => {
+    const storedUser = localStorage.getItem("loggedInUser");
+        if (storedUser) {
+        setUsername(storedUser);
+        }
+    }, []);
+
     return (
         <div className="center-wrapper">
         <div className="card-main">
+            <p className="hello-text">Hello, {username}</p>
             {!showFact && (
                 <button className="cat-fact-btn" onClick={fetchData}>Meow's the Time for a Fact</button>
             )}
